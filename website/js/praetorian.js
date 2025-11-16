@@ -55,8 +55,6 @@ function exit() {
                     "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!\n",
                     "SYSTEMS LOCKED! SHUTDOWN NOW... GOOD BYE!",
                 ]
@@ -90,9 +88,10 @@ function piSymbol() {
 
     xhr.onload = function() {
         if (xhr.status === 200) {
-            COMMANDS[0].output[0] = xhr.responseText;
-            COMMANDS[0].output[1] = "\nDon´t click if you are not from Praetorian!\n";
-            COMMANDS[0].output[2] = "YOU HAVE BEEN PWNED!!!\n";
+            COMMANDS[0].output[0] = "\n<span class='ansi-color-fg-97'>I CAN SEE YOU!!!</span>\n";
+            COMMANDS[0].output[1] = xhr.responseText;
+            COMMANDS[0].output[2] = "\nDon´t click if you are not from Praetorian!\n";
+            COMMANDS[0].output[3] = "<span class='ansi-color-fg-97'>YOU HAVE BEEN PWNED!!!</span>\n";
         }
         else
             COMMANDS[0].output[0] = xhr.statusText;
