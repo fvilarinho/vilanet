@@ -10,11 +10,13 @@
 /* terminal theme */
 :root {
 	--color1: #5fffff;
-	--color2: #ff87af;
+	--color2: #ff0000;
 	--color3: #87ff87;
-	--color4: #666;
+	--color4: #666666;
 	--color5: #c6c6c6;
-    --color6: #ffd7af;
+    --color6: #111111;
+    --color7: #333333;
+    --color8: #cacaca;
 }
 
 * {
@@ -47,13 +49,13 @@ ul {
 }
 
 .shadow {
-	border: 1px solid #87ff8755; /* color3 */
-	box-shadow: 0 0 200px #87ff8734;
+	border: 1px solid #87ff8750;
+	box-shadow: 0 0 200px #87ff8730;
 }
 
 .badShadow {
-    border: 1px solid #ff0000; /* color3 */
-    box-shadow: 0 0 200px #ff0000;
+    border: 1px solid var(--color2);
+    box-shadow: 0 0 200px #ff000070;
 }
 
 @media (max-width: 650px) {
@@ -63,7 +65,7 @@ ul {
 }
 
 body {
-	background-color: #000;
+	background-color: black;
 	color: var(--color5);
 	font-size: 15px;
 }
@@ -97,7 +99,7 @@ h1.title {
 
 #top-nav {
 	text-align: left;
-	border-bottom: 1px solid #87ff8755; /* color3 */
+	border-bottom: 1px solid var(--color4); /* color3 */
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -124,7 +126,7 @@ h1.title {
 }
 
 #top-nav > ul > li a:hover {
-	background-color: #333;;
+	background-color: var(--color7);
 }
 
 #top-nav > ul > li .active {
@@ -142,7 +144,7 @@ p.content {
 
 /* terminal display */
 pre.terminal {
-	background-color: #111;
+	background-color: var(--color6);
 	min-height: 675px;
 	overflow-x: auto;
     border-radius: 10px;
@@ -159,7 +161,7 @@ pre.terminal > code::after {
     top: 2px;
 	width: 10px;
 	height: 2px;
-	background: white;
+	background: var(--color5);
 	display: inline-block;
 	animation: cursor-blink 1s step-start infinite;
     content: "";
@@ -192,11 +194,11 @@ th {
 }
 
 tr:nth-child(odd) {
-	background-color: #131313;
+	background-color: var(--color6);
 }
 
 tr:hover {
-	background-color: #222;
+	background-color: var(--color7);
 }
 
 .praetorian {

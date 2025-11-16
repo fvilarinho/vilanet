@@ -11,7 +11,7 @@ const COMMANDS = [
         "baseDir": "contact",
         "output": [
             "total 5",
-            "drw-r--r-- 1 me me 313 nov 15 13:05 <a href='index.html'><span style='color: #cacaca;'>myinfo.txt</span></a>\n"
+            "drw-r--r-- 1 me me 313 nov 15 13:05 myinfo.txt\n"
         ]
     },
     {
@@ -19,10 +19,10 @@ const COMMANDS = [
         "authenticated": true,
         "baseDir": "contact",
         "output": [
-            "<span class='ansi-color-fg-97'>Login  Name              e-Mails                 Sociais / Websites</span>",
-            "me     Felipe Vilarinho  <a href='mailto:me@vila.net.br'><span style='color: #cacaca;'>me@vila.net.br</span></a>          <a href='https://github.com/fvilarinho' target='_github'><span style='color: #cacaca;'>https://github.com/fvilarinho</span></a>",
-            "                         <a href='mailto:fvilarinho@gmail.com'><span style='color: #cacaca;'>fvilarinho@gmail.com</span></a>    <a href='https://www.linkedin.com/in/fvilarinho' target='_linkedin'><span style='color: #cacaca;'>https://www.linkedin.com/in/fvilarinho</span</a>",
-            "                         <a href='mailto:fvilarinho@outlook.com'><span style='color: #cacaca;'>fvilarinho@outlook.com</span></a>  <a href='https://medium.com/@ask2vila' target='_medium'><span style='color: #cacaca;'>https://medium.com/@ask2vila</span></a>\n",
+            "<span class='ansi-color-fg-97'>Login  Name              e-Mails                 Socials / Websites</span>",
+            "me     Felipe Vilarinho  <a href='mailto:me@vila.net.br'><span class='ansi-color-fg-5-251'>me@vila.net.br</span></a>          <a href='https://github.com/fvilarinho' target='_github'><span class='ansi-color-fg-5-251'>https://github.com/fvilarinho</span></a>",
+            "                         <a href='mailto:fvilarinho@gmail.com'><span class='ansi-color-fg-5-251'>fvilarinho@gmail.com</span></a>    <a href='https://www.linkedin.com/in/fvilarinho' target='_linkedin'><span class='ansi-color-fg-5-251'>https://www.linkedin.com/in/fvilarinho</span</a>",
+            "                         <a href='mailto:fvilarinho@outlook.com'><span class='ansi-color-fg-5-251'>fvilarinho@outlook.com</span></a>  <a href='https://medium.com/@ask2vila' target='_medium'><span class='ansi-color-fg-5-251'>https://medium.com/@ask2vila</span></a>\n",
         ]
     },
     {

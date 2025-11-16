@@ -1,6 +1,6 @@
 const COMMANDS = [
     {
-        "executable": "sh -c .pretorian",
+        "executable": "sh -c .praetorian",
         "authenticated": true,
         "pwned": true,
         "baseDir": "",
