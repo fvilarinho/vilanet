@@ -10,11 +10,11 @@ const COMMANDS = [
         "authenticated": true,
         "baseDir": "bio",
         "output": [
-        "total 8",
-        "drw-r--r-- 1 me me  633 nov 15 14:11 <a href='early_days.html'><span style='color: #cacaca;'>1.early_days.txt</span></a>",
-        "drw-r--r-- 1 me me  989 nov 15 14:11 <a href='#'><span style='color: #cacaca;'>2.college.txt</span></a>",
-        "drw-r--r-- 1 me me  989 nov 15 14:11 <a href='#'><span style='color: #cacaca;'>3.career.txt</span></a>",
-        "drw-r--r-- 1 me me  989 nov 15 14:11 <a href='#'><span style='color: #cacaca;'>4.future.txt</span></a>\n",
+            "total 8",
+            "drw-r--r-- 1 me me  633 nov 15 14:11 <a href='early_days.html'><span class='ansi-color-fg-5-251'>1.early_days.txt</span></a>",
+            "drw-r--r-- 1 me me  989 nov 15 14:11 <a href='#'><span class='ansi-color-fg-5-251'>2.college.txt</span></a>",
+            "drw-r--r-- 1 me me  989 nov 15 14:11 <a href='#'><span class='ansi-color-fg-5-251'>3.career.txt</span></a>",
+            "drw-r--r-- 1 me me  989 nov 15 14:11 <a href='#'><span class='ansi-color-fg-5-251'>4.future.txt</span></a>\n",
         ]
     },
     {
