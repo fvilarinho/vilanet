@@ -8,13 +8,13 @@
  * License: MIT
  */
 const TYPING_SPEED = 50;
-const RUN_DELAY = 1500;
+const RUN_DELAY = 1000;
 const LINEBREAK = "\n";
 
 const terminal = document.getElementById("main-terminal").children[0];
 
-function buildPrompt(index) {
-    let commandObject = COMMANDS[index];
+function buildPrompt(commandsList, index) {
+    let commandObject = commandsList[index];
     let ps1 = "";
 
     if(commandObject == null)
@@ -38,10 +38,13 @@ function buildPrompt(index) {
                 if (currentDir != null && currentDir.length > 0)
                     ps1 += "/" + currentDir;
 
-                ps1 += "</span>]";
+                ps1 += "</span>]$ ";
             }
-            else
-                ps1 = "$ ";
+            else {
+                ps1 = "> ";
+
+                terminal.pwned = true;
+            }
         }
         else if (commandObject.authenticated != null && !commandObject.authenticated) {
             if (index === 0)
@@ -54,8 +57,8 @@ function buildPrompt(index) {
     return ps1;
 }
 
-function runCommand(index, callback) {
-    let commandObject = COMMANDS[index];
+function runCommand(commandsList, index, callback) {
+    let commandObject = commandsList[index];
     let executable = commandObject.executable.split("");
     let outputList = commandObject.output;
     let outputObject = outputList.map((line) => line + LINEBREAK);
@@ -66,7 +69,7 @@ function runCommand(index, callback) {
         if (count === outputItems.length) {
             blinkCursorStart();
 
-            terminal.ps1 = buildPrompt(index + 1);
+            terminal.ps1 = buildPrompt(commandsList, index + 1);
 
             terminal.innerHTML += terminal.ps1;
 
@@ -102,12 +105,17 @@ function main() {
 
     function runCommands() {
         setTimeout(function () {
-            if(index < COMMANDS.length)
-                runCommand(index++, runCommands);
+            if(index < COMMANDS.length) {
+                runCommand(COMMANDS, index++, runCommands);
+
+                terminal.running = true;
+            }
+            else
+                terminal.running = false;
         }, RUN_DELAY);
     }
 
-    terminal.ps1 = buildPrompt(index);
+    terminal.ps1 = buildPrompt(COMMANDS, index);
     terminal.innerHTML = terminal.ps1;
 
     runCommands();
