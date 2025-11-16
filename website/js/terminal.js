@@ -23,22 +23,25 @@ function buildPrompt(index) {
         if (commandObject.authenticated != null && commandObject.authenticated) {
             let now = new Date();
 
-            ps1 = "[";
-            ps1 += "<span class='ansi-color-fg-5-223'>" + now.toUTCString() + "</span>";
-            ps1 += " - ";
-            ps1 += "<span class='ansi-color-fg-5-120'>me</span>";
-            ps1 += "@";
-            ps1 += "<span class='ansi-color-fg-5-87'>vilanet</span>";
-            ps1 += "<span class='ansi-color-fg-5-15'>:</span>";
-            ps1 += "<span class='ansi-color-fg-5-33'>~";
+            if (commandObject.pwned == null || !commandObject.pwned) {
+                ps1 = "[";
+                ps1 += "<span class='ansi-color-fg-5-223'>" + now.toUTCString() + "</span>";
+                ps1 += " - ";
+                ps1 += "<span class='ansi-color-fg-5-120'>me</span>";
+                ps1 += "@";
+                ps1 += "<span class='ansi-color-fg-5-87'>vilanet</span>";
+                ps1 += "<span class='ansi-color-fg-5-15'>:</span>";
+                ps1 += "<span class='ansi-color-fg-5-33'>~";
 
-            let currentDir = commandObject.baseDir;
+                let currentDir = commandObject.baseDir;
 
-            if (currentDir != null && currentDir.length > 0)
-                ps1 += "/" + currentDir;
+                if (currentDir != null && currentDir.length > 0)
+                    ps1 += "/" + currentDir;
 
-            ps1 += "</span>]";
-            ps1 += "$ ";
+                ps1 += "</span>]";
+            }
+            else
+                ps1 = "$ ";
         }
         else if (commandObject.authenticated != null && !commandObject.authenticated) {
             if (index === 0)
@@ -104,7 +107,8 @@ function main() {
         }, RUN_DELAY);
     }
 
-    terminal.innerHTML = buildPrompt(index);
+    terminal.ps1 = buildPrompt(index);
+    terminal.innerHTML = terminal.ps1;
 
     runCommands();
 }
