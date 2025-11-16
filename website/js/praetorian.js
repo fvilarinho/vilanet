@@ -54,7 +54,6 @@ function exit() {
                     "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!\n",
                     "SYSTEMS LOCKED! SHUTDOWN NOW... GOOD BYE!",
                 ]
