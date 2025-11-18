@@ -12,7 +12,7 @@ const LINKS = [
         "target": "_ysap"
     },
     {
-        "url": "praetorian.html",
+        "url": "/praetorian",
         "urlLabel": "&pi;",
         "className": "praetorian"
     }

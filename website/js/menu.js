@@ -2,27 +2,27 @@ const MENU_ITEMS = [
     {
         "name": "home",
         "label" : "HOME",
-        "url" : "index.html"
+        "url" : "/"
     },
     {
         "name": "about",
         "label" : "ABOUT",
-        "url" : "about.html"
+        "url" : "/about"
     },
     {
         "name": "bio",
         "label" : "BIO",
-        "url" : "bio.html"
+        "url" : "/bio"
     },
     {
         "name": "contact",
         "label" : "CONTACT",
-        "url" : "contact.html"
+        "url" : "/contact"
     },
     {
         "name": "resources",
         "label" : "RESOURCES",
-        "url" : "resources.html"
+        "url" : "/resources"
     }
 ];
 
