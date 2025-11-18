@@ -22,7 +22,7 @@ const MENU_ITEMS = [
     {
         "name": "resources",
         "label" : "RESOURCES",
-        "url" : "#"
+        "url" : "resources.html"
     }
 ];
 

@@ -7,6 +7,7 @@
  * Date: April 05, 2025.
  * License: MIT
  */
+const VERSION = "1.1.0";
 const TYPING_SPEED = 50;
 const RUN_DELAY = 1000;
 const LINEBREAK = "\n";
@@ -24,21 +25,18 @@ function buildPrompt(commandsList, index) {
             let now = new Date();
 
             if (commandObject.pwned == null || !commandObject.pwned) {
-                ps1 = "[";
-                ps1 += "<span class='ansi-color-fg-5-223'>" + now.toUTCString() + "</span>";
-                ps1 += " - ";
-                ps1 += "<span class='ansi-color-fg-5-120'>me</span>";
-                ps1 += "@";
-                ps1 += "<span class='ansi-color-fg-5-87'>vilanet</span>";
-                ps1 += "<span class='ansi-color-fg-5-15'>:</span>";
-                ps1 += "<span class='ansi-color-fg-5-33'>~";
+                ps1 = "[\e[38;5;223m";
+                ps1 += now.toUTCString();
+                ps1 += "\e[38;5;251m - \e[38;5;120mme\e[38;5;251m@\e[38;5;87mvilanet\e[38;5;251m:\e[38;5;33m~";
 
                 let currentDir = commandObject.baseDir;
 
-                if (currentDir != null && currentDir.length > 0)
-                    ps1 += "/" + currentDir;
+                if (currentDir != null && currentDir.length > 0) {
+                    ps1 += "/";
+                    ps1 += currentDir;
+                }
 
-                ps1 += "</span>]$ ";
+                ps1 += "\e[38;5;251m]$ ";
             }
             else {
                 ps1 = "> ";
@@ -47,21 +45,25 @@ function buildPrompt(commandsList, index) {
             }
         }
         else if (commandObject.authenticated != null && !commandObject.authenticated) {
-            if (index === 0)
-                ps1 = "vilanet linux 1.0.0 tty1\n\nvilanet login: ";
+            if (index === 0) {
+                ps1 = "vilanet linux ";
+                ps1 += VERSION;
+                ps1 += " tty1\n\n";
+                ps1 += "vilanet login: ";
+            }
             else
                 ps1 = "Password: ";
         }
     }
 
-    return ps1;
+    return ansi2Html(ps1);
 }
 
 function runCommand(commandsList, index, callback) {
     let commandObject = commandsList[index];
     let executable = commandObject.executable.split("");
     let outputList = commandObject.output;
-    let outputObject = outputList.map((line) => line + LINEBREAK);
+    let outputObject = outputList.map((line) => ansi2Html(line) + LINEBREAK);
     let outputItems = [].concat(executable, LINEBREAK, outputObject);
     let count = 0;
 
@@ -70,7 +72,6 @@ function runCommand(commandsList, index, callback) {
             blinkCursorStart();
 
             terminal.ps1 = buildPrompt(commandsList, index + 1);
-
             terminal.innerHTML += terminal.ps1;
 
             callback();
@@ -105,7 +106,7 @@ function main() {
 
     function runCommands() {
         setTimeout(function () {
-            if(index < COMMANDS.length) {
+            if (index < COMMANDS.length) {
                 runCommand(COMMANDS, index++, runCommands);
 
                 terminal.running = true;

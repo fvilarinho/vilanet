@@ -13,7 +13,7 @@ const PRAETORIAN_OUTPUT_URL = "https://ipinfo.io/json"
 
 function exit() {
     if(terminal != null && terminal.running != null && !terminal.running) {
-        var exitObject = document.getElementById("exit");
+        const exitObject = document.getElementById("exit");
 
         exitObject.addEventListener("click", function(event) {
             event.stopPropagation();
@@ -46,8 +46,6 @@ function exit() {
                 "baseDir": "",
                 "output": [
                     "access: PERMISSION DENIED....and....",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",
                     "YOU DIDN´T SAY THE MAGIC WORD!",

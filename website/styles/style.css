@@ -80,7 +80,7 @@ body, code {
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 10px;
-	max-width: 835px;
+	max-width: 900px;
 	padding: 0 6px;
 }
 
@@ -145,8 +145,9 @@ p.content {
 /* terminal display */
 pre.terminal {
 	background-color: var(--color6);
-	min-height: 675px;
-	overflow-x: auto;
+	max-height: 650px;
+    min-height: 650px;
+	overflow: auto;
     border-radius: 10px;
 }
 

@@ -1,10 +1,10 @@
 const COMMANDS = [
     {
-        "executable": "cat bio.txt",
+        "executable": "cd resources",
         "authenticated": true,
         "baseDir": "",
         "output": [
-            "cat: bio.txt: No such file or directory\n"
+            "cd: no such file or directory: resources\n"
         ]
     },
     {
