@@ -8,57 +8,61 @@ const COMMANDS = [
     }
 ];
 
+const PRANK_COMMANDS = [
+    {
+        "executable": "access security",
+        "authenticated": true,
+        "pwned": true,
+        "baseDir": "",
+        "output": [
+            "access: PERMISSION DENIED."
+        ]
+    },
+    {
+        "executable": "access security grid",
+        "authenticated": true,
+        "pwned": true,
+        "baseDir": "",
+        "output": [
+            "access: PERMISSION DENIED."
+        ]
+    },
+    {
+        "executable": "access main security grid",
+        "authenticated": true,
+        "pwned": true,
+        "baseDir": "",
+        "output": [
+            "access: PERMISSION DENIED....and....",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!",
+            "YOU DIDN´T SAY THE MAGIC WORD!\n",
+            "SYSTEMS LOCKED! SHUTDOWN NOW... GOOD BYE!",
+        ]
+    }
+];
+
 const PRANK_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 const PRAETORIAN_OUTPUT_URL = "https://ipinfo.io/json"
 
 function exit() {
-    if(terminal != null && terminal.running != null && !terminal.running) {
+    if (terminal != null && terminal.running != null && !terminal.running) {
         const exitObject = document.getElementById("exit");
 
-        exitObject.addEventListener("click", function(event) {
+        exitObject.addEventListener("click", function (event) {
             event.stopPropagation();
             event.preventDefault();
         }, true);
-
-        const PRANK_COMMANDS = [
-            {
-                "executable": "access security",
-                "authenticated": true,
-                "pwned": true,
-                "baseDir": "",
-                "output": [
-                    "access: PERMISSION DENIED."
-                ]
-            },
-            {
-                "executable": "access security grid",
-                "authenticated": true,
-                "pwned": true,
-                "baseDir": "",
-                "output": [
-                    "access: PERMISSION DENIED."
-                ]
-            },
-            {
-                "executable": "access main security grid",
-                "authenticated": true,
-                "pwned": true,
-                "baseDir": "",
-                "output": [
-                    "access: PERMISSION DENIED....and....",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!",
-                    "YOU DIDN´T SAY THE MAGIC WORD!\n",
-                    "SYSTEMS LOCKED! SHUTDOWN NOW... GOOD BYE!",
-                ]
-            }
-        ];
-
-        let index = 0;
 
         function shutdown() {
             top.location.href = PRANK_URL;
@@ -71,8 +75,10 @@ function exit() {
                 else
                     shutdown();
 
-            }, RUN_DELAY);
+            }, terminal.delayBetweenCommands);
         }
+
+        let index = 0;
 
         runPrank();
     }
@@ -85,10 +91,10 @@ function piSymbol() {
 
     xhr.onload = function() {
         if (xhr.status === 200) {
-            COMMANDS[0].output[0] = "\n<span class='ansi-color-fg-97'>I CAN SEE YOU!!!</span>\n";
+            COMMANDS[0].output[0] = "\n\e[38;97mI CAN SEE YOU!!!\n";
             COMMANDS[0].output[1] = xhr.responseText;
             COMMANDS[0].output[2] = "\nDon´t click if you are not from Praetorian!\n";
-            COMMANDS[0].output[3] = "<span class='ansi-color-fg-97'>YOU HAVE BEEN PWNED!!!</span>\n";
+            COMMANDS[0].output[3] = "\e[38;97mYOU HAVE BEEN PWNED!!!\n";
         }
         else
             COMMANDS[0].output[0] = xhr.statusText;

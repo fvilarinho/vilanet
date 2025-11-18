@@ -12,14 +12,16 @@
 	<body>
 		<div id="container">
             <div id="top-nav"></div>
-            <h1 class="title"><span class="ansi-color-fg-5-120">&gt; vilanet.sh</span></h1>
-            <pre class="terminal shadow" id="main-terminal"><code></code></pre>
+            <h1>&gt; vilanet.sh</h1>
+            <div id="terminal" class="shadow">
+                <span id="terminalOutput"></span><span id="terminalCursor" class="blinkingTerminalCursor">&nbsp;</span>
+            </div>
+            <div id="footer"></div>
         </div>
-        <pre id="footer"><code></code></pre>
+        <script src="js/ansi.js"></script>
         <script src="js/menu.js"></script>
         <script src="js/footer.js"></script>
         <script src="js/resources.js"></script>
-        <script src="js/ansi.js"></script>
         <script src="js/terminal.js"></script>
         <script>
             setActiveMenu("resources");

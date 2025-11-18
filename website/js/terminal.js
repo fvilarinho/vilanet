@@ -7,18 +7,20 @@
  * Date: April 05, 2025.
  * License: MIT
  */
-const VERSION = "1.1.0";
-const TYPING_SPEED = 50;
-const RUN_DELAY = 1000;
-const LINEBREAK = "\n";
+const terminal = document.getElementById("terminal");
 
-const terminal = document.getElementById("main-terminal").children[0];
+terminal.version = "1.1.0";
+terminal.typeSpeed = 50 // milliseconds.
+terminal.delayBetweenCommands = 1000; // milliseconds;
+terminal.lineBreak = "\n";
+terminal.output = document.getElementById("terminalOutput");
+terminal.cursor = document.getElementById("terminalCursor");
 
 function buildPrompt(commandsList, index) {
     let commandObject = commandsList[index];
     let ps1 = "";
 
-    if(commandObject == null)
+    if (commandObject == null)
         ps1 = terminal.ps1;
     else {
         if (commandObject.authenticated != null && commandObject.authenticated) {
@@ -47,77 +49,92 @@ function buildPrompt(commandsList, index) {
         else if (commandObject.authenticated != null && !commandObject.authenticated) {
             if (index === 0) {
                 ps1 = "vilanet linux ";
-                ps1 += VERSION;
-                ps1 += " tty1\n\n";
+                ps1 += terminal.version;
+                ps1 += " tty1";
+                ps1 += terminal.lineBreak;
+                ps1 += terminal.lineBreak;
                 ps1 += "vilanet login: ";
             }
             else
                 ps1 = "Password: ";
         }
+
+        ps1 = ansi2Html(ps1);
+
+        terminal.ps1 = ansi2Html(ps1);
     }
 
-    return ansi2Html(ps1);
+    return ps1;
 }
 
 function runCommand(commandsList, index, callback) {
     let commandObject = commandsList[index];
     let executable = commandObject.executable.split("");
     let outputList = commandObject.output;
-    let outputObject = outputList.map((line) => ansi2Html(line) + LINEBREAK);
-    let outputItems = [].concat(executable, LINEBREAK, outputObject);
+    let outputObject = outputList.map((line) => ansi2Html(line) + terminal.lineBreak);
+    let outputItems = [].concat(executable, terminal.lineBreak, outputObject);
     let count = 0;
 
     function type() {
         if (count === outputItems.length) {
-            blinkCursorStart();
+            startCursorBlinking();
 
-            terminal.ps1 = buildPrompt(commandsList, index + 1);
-            terminal.innerHTML += terminal.ps1;
+            terminal.output.innerHTML += buildPrompt(commandsList, index + 1);
+
+            scrollIntoView();
 
             callback();
 
             return;
         }
 
-        let outputItem = outputItems[count];
-
-        terminal.innerHTML += outputItem;
+        terminal.output.innerHTML += outputItems[count];
 
         count++;
 
-        setTimeout(type, TYPING_SPEED);
+        scrollIntoView();
+
+        setTimeout(type, terminal.typeSpeed);
     }
 
-    blinkCursorEnd();
+    stopCursorBlinking();
 
     type();
 }
 
-function blinkCursorStart() {
-    terminal.classList.remove("no-animation");
+function startCursorBlinking() {
+    terminal.cursor.classList.remove("staticTerminalCursor");
+    terminal.cursor.classList.add("blinkingTerminalCursor");
 }
 
-function blinkCursorEnd() {
-    terminal.classList.add("no-animation");
+function stopCursorBlinking() {
+    terminal.cursor.classList.remove("blinkingTerminalCursor");
+    terminal.cursor.classList.add("staticTerminalCursor");
+}
+
+function scrollIntoView() {
+    terminal.scrollTop = terminal.scrollHeight;
 }
 
 function main() {
-    let index = 0;
+    if (terminal == null || COMMANDS == null || COMMANDS.length === 0)
+        return;
 
     function runCommands() {
         setTimeout(function () {
             if (index < COMMANDS.length) {
-                runCommand(COMMANDS, index++, runCommands);
-
                 terminal.running = true;
+
+                runCommand(COMMANDS, index++, runCommands);
             }
             else
                 terminal.running = false;
-        }, RUN_DELAY);
+        }, terminal.delayBetweenCommands);
     }
 
-    terminal.ps1 = buildPrompt(COMMANDS, index);
-    terminal.innerHTML = terminal.ps1;
+    let index = 0;
+
+    terminal.output.innerHTML = buildPrompt(COMMANDS, index);
 
     runCommands();
 }

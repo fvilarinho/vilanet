@@ -1,7 +1,7 @@
 function ansi2Html(value) {
     let result = "";
 
-    if(value != null && value.length > 0) {
+    if (value != null && value.length > 0) {
         let pos = value.indexOf("\e[");
 
         if (pos >= 0) {

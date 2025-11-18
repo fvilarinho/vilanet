@@ -30,17 +30,12 @@ const COMMANDS = [
             "\e[38;5;235;48;5;235m▄\e[38;5;236;48;5;236m▄▄\e[38;5;235;48;5;236m▄\e[38;5;234;48;5;234m▄\e[38;5;233;48;5;233m▄\e[38;5;236;48;5;235m▄\e[38;5;239;48;5;238m▄\e[38;5;238;48;5;238m▄\e[38;5;239;48;5;238m▄▄\e[38;5;236;48;5;235m▄\e[38;5;234;48;5;234m▄\e[38;5;235;48;5;236m▄\e[38;5;238;48;5;237m▄\e[38;5;236;48;5;237m▄\e[38;5;237;48;5;238m▄\e[38;5;238;48;5;235m▄\e[38;5;234;48;5;233m▄\e[38;5;235;48;5;235m▄\e[38;5;236;48;5;237m▄\e[38;5;237;48;5;238m▄\e[38;5;238;48;5;237m▄\e[38;5;237;48;5;237m▄\e[38;5;237;48;5;238m▄\e[38;5;238;48;5;102m▄\e[38;5;243;48;5;248m▄\e[38;5;144;48;5;144m▄\e[38;5;180;48;5;138m▄▄\e[38;5;144;48;5;138m▄\e[38;5;138;48;5;138m▄▄▄▄\e[38;5;138;48;5;144m▄▄\e[38;5;144;48;5;144m▄\e[38;5;138;48;5;144m▄\e[38;5;240;48;5;243m▄\e[38;5;238;48;5;239m▄\e[38;5;237;48;5;238m▄\e[38;5;236;48;5;237m▄\e[38;5;234;48;5;235m▄\e[38;5;236;48;5;235m▄\e[38;5;237;48;5;237m▄\e[38;5;238;48;5;237m▄\e[38;5;238;48;5;238m▄",
             "\nHi, my name is \e[38;97mFelipe Vilarinho\e[38;5;251m (A.K.A \e[38;97mVILA\e[38;5;251m) and \e[38;97mWELCOME\e[38;5;251m to my personal website!!\n",
             "I’m a \e[38;97mBrazilian\e[38;5;251m, a total \e[38;97mgeek\e[38;5;251m, \e[38;97mdeveloper\e[38;5;251m by nature and yes, \e[38;97mthe Force\e[38;5;251m is strong with me!\n",
-            "I'm not a frontend guy so I prefer work on the backend, automations, scripting, etc. that's why",
-            "this website looks like this. If you prefer fancy graphics than the \e[38;97mBEAUTY\e[38;5;251m of a \e[38;97mterminal\e[38;5;251m, I feel",
-            "sorry about you :) BTW, the visuals are identical to what I'm using in my computers.\n",
-            "But before all the code and lightsabers there's my amazing family. I’ve been happily married for",
-            "over 20 years (we must be doing something right!), and we have an amazing son.\n",
+            "I'm not a frontend guy so I prefer work on the backend, automations, scripting, etc. that's why this website looks like this. If you prefer fancy graphics than the \e[38;97mBEAUTY\e[38;5;251m of a \e[38;97mterminal\e[38;5;251m, I feel sorry about you :) BTW, the visuals are identical to what I'm using in my computers.\n",
+            "But before all the code and lightsabers there's my amazing family. I’ve been happily married for over 20 years (we must be doing something right!), and we have an amazing son.\n",
             "They are absolutely my \e[38;97mWHY\e[38;5;251m and my \e[38;97mbiggest adventure\e[38;5;251m - \e[38;95mS2\e[38;5;251m!\n",
-            "So, in my endless quest to find good stuff in the wild world of the Internet, I discovered this guy",
-            "<a href='https://www.daveeddy.com' target='_daveeddy'><span>Dave Eddy</span></a>. He has this amazing <a href='https://ysap.sh/youtube' target='_ysap'><span>YouTube channel</span></a> about programming in its essence.\n",
-            "Please consider subscribing! His content is \e[38;97mAWESOME\e[38;5;251m!!\n",
-            "The idea here is to share knowledge as much as possible about \e[38;97mprogramming, automation, networking,",
-            "\e[38;97msecurity, AI\e[38;5;251m and \e[38;97mmuch more\e[38;5;251m. Maybe I convince you to take the \e[38;91mred pill\e[38;5;251m and wake up from the \e[38;5;120mMatrix\e[38;5;251m!\n"
+            "So, in my endless quest to find good stuff in the wild world of the Internet, I discovered this guy <a href='https://www.daveeddy.com' target='_daveeddy'>Dave Eddy</a>. He has this amazing <a href='https://ysap.sh/youtube' target='_ysap'>YouTube channel</a> about programming in its essence.\n",
+            "Please consider subscribing! His content is \e[38;97mAWESOME\e[38;5;251m!! and really inspiring!\n",
+            "The idea here is to share knowledge as much as possible about \e[38;97mprogramming, automation, networking, \e[38;97msecurity, AI\e[38;5;251m and \e[38;97mmuch more\e[38;5;251m. Maybe I convince you to take the \e[38;91mred pill\e[38;5;251m and wake up from the \e[38;5;120mMatrix\e[38;5;251m!\n"
         ]
     },
     {
@@ -49,8 +44,8 @@ const COMMANDS = [
         "baseDir": "",
         "output": [
             "total 16",
-            "drw-r--r-- 1 me me 1285 nov 15 13:12 <a href='/about'><span class='ansi-color-fg-5-251'>about.txt</span></a>",
-            "drwxr-xr-x 3 me me    3 nov 15 13:06 <a href='/contact'><span class='ansi-color-fg-5-33'>contact</span></a>\n",
+            "drw-r--r-- 1 me me 1285 nov 15 13:12 <a href='" + getMenuUrl("about") + "' class='ansi-color-fg-5-251'>about.txt</a>",
+            "drwxr-xr-x 3 me me    3 nov 15 13:06 <a href='" + getMenuUrl("contact") + "' class='ansi-color-fg-5-33'>contact</a>\n",
         ]
     }
 ];

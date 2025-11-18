@@ -16,8 +16,11 @@
                     <li class="right" id="exit"><a href="javascript:exit();">EXIT</a></li>
                 </ul>
             </div>
-            <h1 class="title"><span class="ansi-color-fg-91">&gt; vilanet.sh</span></h1>
-            <pre class="terminal badShadow" id="main-terminal"><code></code></pre>
+            <h1 class="praetorianTitle">&gt; vilanet.sh</h1>
+            <div id="terminal" class="praetorianShadow">
+                <span id="terminalOutput"></span><span id="terminalCursor" class="blinkingTerminalCursor">&nbsp;</span>
+            </div>
+            <div id="footer"></div>
         </div>
         <script src="js/praetorian.js"></script>
         <script src="js/ansi.js"></script>
