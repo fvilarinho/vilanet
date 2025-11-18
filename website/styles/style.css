@@ -152,7 +152,8 @@ pre.terminal {
 }
 
 #pre.terminal > code {
-	font-size: 15px;
+    font-family: "JetBrains", monospace;
+    font-size: 15px;
     line-height: 15px;
 }
 
