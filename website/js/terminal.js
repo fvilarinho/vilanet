@@ -9,7 +9,7 @@
  */
 const terminal = document.getElementById("terminal");
 
-terminal.version = "1.1.0";
+terminal.version = "1.2.0";
 terminal.typeSpeed = 50 // milliseconds.
 terminal.delayBetweenCommands = 1000; // milliseconds;
 terminal.lineBreak = "\n";
