@@ -12,7 +12,7 @@ const COMMANDS = [
         "output": [
             "\nThe programs included with this GNU/Linux system are free software; the exact distribution terms for each program are described in the individual files in /usr/share/doc/*/copyright.\n",
             "GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law.\n",
-            "\nLast login: " + now.toUTCString() + " on tty1\n",
+            "\nLast login: " + now.toDateString() + " " + now.toLocaleTimeString() + " on tty1\n",
         ]
     },
     {

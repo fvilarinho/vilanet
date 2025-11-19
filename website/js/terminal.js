@@ -28,7 +28,7 @@ function buildPrompt(commandsList, index) {
 
             if (commandObject.pwned == null || !commandObject.pwned) {
                 ps1 = "[\e[38;5;223m";
-                ps1 += now.toUTCString();
+                ps1 += now.toDateString() + " " + now.toLocaleTimeString();
                 ps1 += "\e[38;5;251m - \e[38;5;120mme\e[38;5;251m@\e[38;5;87mvilanet\e[38;5;251m:\e[38;5;33m~";
 
                 let currentDir = commandObject.baseDir;
