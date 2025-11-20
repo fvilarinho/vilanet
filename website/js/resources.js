@@ -3,9 +3,34 @@ const COMMANDS = [
         "executable": "cd resources",
         "authenticated": true,
         "baseDir": "",
+        "output": [""]
+    },
+    {
+        "executable": "ls -l",
+        "authenticated": true,
+        "baseDir": "resources",
         "output": [
-            "cd: no such file or directory: resources\n"
+            "total 5",
+            "drw-r--r-- 1 me me 313 nov 15 13:05 myprojects.txt\n"
         ]
+    },
+    {
+        "executable": "cat myprojects.txt",
+        "authenticated": true,
+        "baseDir": "resources",
+        "output": [
+            "+---------------------+--------------------------------------------------+",
+            "| \e[38;97mName\e[38;5;251m                | \e[38;97mURL\e[38;5;251m                                              |",
+            "+---------------------+--------------------------------------------------+",
+            "| Raspberry PI camera | <a href='https://github.com/fvilarinho/raspberrypi-camera' target='_raspberrypi-camera'>https://github.com/fvilarinho/raspberrypi-camera</a> |",
+            "+---------------------+--------------------------------------------------+\n"
+        ]
+    },
+    {
+        "executable": "cd ..",
+        "authenticated": true,
+        "baseDir": "resources",
+        "output": [""]
     },
     {
         "executable": "ls -l",
