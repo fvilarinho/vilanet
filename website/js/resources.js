@@ -21,7 +21,7 @@ const COMMANDS = [
         "baseDir": "resources",
         "output": [
             "\n+-----------------------------+--------------------------------------------------------+",
-            "| \e[38;97mName\e[38;5;251m                        | \e[38;97mURL\e[38;5;251m                                                    |",
+            "| \e[38;97m\e[1mName\e[0m                        | \e[38;97m\e[1mURL\e[0m                                                    |",
             "+-----------------------------+--------------------------------------------------------+",
             "| My Website                  | <a href='https://github.com/fvilarinho/vilanet' target='_vilanet'>https://github.com/fvilarinho/vilanet</a>                  |",
             "| Raspberry PI camera         | <a href='https://github.com/fvilarinho/raspberrypi-camera' target='_raspberrypi-camera'>https://github.com/fvilarinho/raspberrypi-camera</a>       |",
@@ -34,7 +34,7 @@ const COMMANDS = [
         "baseDir": "resources",
         "output": [
             "\n+-----------------------------+--------------------------------------------------------+",
-            "| \e[38;97mName\e[38;5;251m                        | \e[38;97mURL\e[38;5;251m                                                    |",
+            "| \e[38;97m\e[1mName\e[0m                        | \e[38;97m\e[1mURL\e[0m                                                    |",
             "+-----------------------------+--------------------------------------------------------+",
             "| My AI Journey — The Genesis | <a href='https://medium.com/@ask2vila/my-ai-journey-the-genesis-b2a604c62f6a' target='_myaijourney'>https://medium.com/@ask2vila/my-ai-journey-the-genesis</a> |",
             "+-----------------------------+--------------------------------------------------------+\n"

@@ -20,7 +20,7 @@ const COMMANDS = [
         "baseDir": "contact",
         "output": [
             "+-------+------------------+------------------------+----------------------------------------+",
-            "| \e[38;97mLogin\e[38;5;251m | \e[38;97mName\e[38;5;251m             | \e[38;97me-Mails\e[38;5;251m                | \e[38;97mSocials / Websites\e[38;5;251m                     |",
+            "| \e[38;97m\e[1mLogin\e[0m | \e[38;97m\e[1mName\e[0m             | \e[38;97m\e[1me-Mails\e[0m                | \e[38;97m\e[1mSocials / Websites\e[0m                     |",
             "+-------+------------------+------------------------+----------------------------------------+",
             "| me    | Felipe Vilarinho | <a href='mailto:me@vila.net.br'>me@vila.net.br</a>         | <a href='https://github.com/fvilarinho' target='_github'>https://github.com/fvilarinho</a>          |",
             "|       |                  | <a href='mailto:fvilarinho@gmail.com'>fvilarinho@gmail.com</a>   | <a href='https://www.linkedin.com/in/fvilarinho' target='_linkedin'>https://www.linkedin.com/in/fvilarinho</a> |",

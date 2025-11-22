@@ -41,11 +41,6 @@ const PRANK_COMMANDS = [
             "YOU DIDN´T SAY THE MAGIC WORD!",
             "YOU DIDN´T SAY THE MAGIC WORD!",
             "YOU DIDN´T SAY THE MAGIC WORD!",
-            "YOU DIDN´T SAY THE MAGIC WORD!",
-            "YOU DIDN´T SAY THE MAGIC WORD!",
-            "YOU DIDN´T SAY THE MAGIC WORD!",
-            "YOU DIDN´T SAY THE MAGIC WORD!",
-            "YOU DIDN´T SAY THE MAGIC WORD!",
             "YOU DIDN´T SAY THE MAGIC WORD!\n",
             "SYSTEMS LOCKED! SHUTDOWN NOW... GOOD BYE!",
         ]
@@ -91,17 +86,22 @@ function piSymbol() {
 
     xhr.onload = function() {
         if (xhr.status === 200) {
-            COMMANDS[0].output[0] = "\n\e[38;97mI CAN SEE YOU!!!\n";
+            COMMANDS[0].output[0] = "\n\e[38;97m\e[1mI CAN SEE YOU!!!\e[0m\n";
             COMMANDS[0].output[1] = xhr.responseText;
             COMMANDS[0].output[2] = "\nDon´t click if you are not from Praetorian!\n";
-            COMMANDS[0].output[3] = "\e[38;97mYOU HAVE BEEN PWNED!!!\n";
+            COMMANDS[0].output[3] = "\e[38;97m\e[1mYOU HAVE BEEN PWNED!!!\e[0m\n";
         }
         else
             COMMANDS[0].output[0] = xhr.statusText;
     };
 
     xhr.onerror = function() {
-        COMMANDS[0].output[0] = "A network error occurred during the request!";
+        window.addEventListener("click", function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+        }, true);
+
+        COMMANDS[0].output[0] = "KERNEL PANIC: A network error occurred during the request!";
     };
 
     xhr.send();

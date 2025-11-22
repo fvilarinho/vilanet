@@ -129,7 +129,7 @@ p.content {
     padding: 10px;
 	max-height: 650px;
     min-height: 650px;
-    line-height: 15px;
+    line-height: 17px;
 	overflow-y: auto;
     font-size: 15px;
     background-color: var(--color6);

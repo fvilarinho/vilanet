@@ -6,62 +6,23 @@ function ansi2Html(value) {
 
         if (pos >= 0) {
             const values = value.split("\e[");
+            let stylesCount = 0;
 
             for (let i = 0; i < values.length; i++) {
                 let item = values[i];
+                let fg = "";
+                let bg = "";
+                let char = "";
 
-                if (item === "m")
-                    result += "</span>";
-                else {
-                    let fg = "";
-                    let bg = "";
-                    let char = "";
+                pos = 0;
 
-                    pos = 0;
+                if (item.startsWith("38;")) {
+                    pos = item.indexOf(";48;");
 
-                    if (item.startsWith("38;")) {
-                        pos = item.indexOf(";48;");
+                    if (pos > 0) {
+                        fg = item.substring(3, pos).replaceAll(";", "-");
+                        bg = item.substring(pos + 4).replaceAll(";", "-");
 
-                        if (pos > 0) {
-                            fg = item.substring(3, pos).replaceAll(";", "-");
-                            bg = item.substring(pos + 4).replaceAll(";", "-");
-
-                            pos = bg.indexOf("m");
-
-                            if (pos > 0) {
-                                char = bg.substring(pos + 1);
-                                bg = bg.substring(0, pos);
-                            }
-
-                            if(result.length > 0)
-                                result += '</span>';
-
-                            result += '<span class="ansi-color-fg-';
-                            result += fg;
-                            result += ' ansi-color-bg-';
-                            result += bg;
-                            result += '">';
-                            result += char;
-                        }
-                        else {
-                            pos = item.indexOf("m");
-
-                            if (pos > 0) {
-                                char = item.substring(pos + 1);
-                                fg = item.substring(3, pos).replaceAll(";", "-");
-                            }
-
-                            if(result.length > 0)
-                                result += '</span>';
-
-                            result += '<span class="ansi-color-fg-';
-                            result += fg;
-                            result += '">';
-                            result += char;
-                        }
-                    }
-                    else if (item.startsWith("48;")) {
-                        bg = item.substring(3).replaceAll(";", "-");
                         pos = bg.indexOf("m");
 
                         if (pos > 0) {
@@ -69,18 +30,103 @@ function ansi2Html(value) {
                             bg = bg.substring(0, pos);
                         }
 
-                        if(result.length > 0)
-                            result += '</span>';
-
-                        result += '<span class="ansi-color-bg-';
+                        result += '<span class="ansi-color-fg-';
+                        result += fg;
+                        result += ' ansi-color-bg-';
                         result += bg;
                         result += '">';
                         result += char;
+
+                        stylesCount++;
                     }
-                    else
-                        result += item;
+                    else {
+                        pos = item.indexOf("m");
+
+                        if (pos > 0) {
+                            char = item.substring(pos + 1);
+                            fg = item.substring(3, pos).replaceAll(";", "-");
+                        }
+
+                        result += '<span class="ansi-color-fg-';
+                        result += fg;
+                        result += '">';
+                        result += char;
+
+                        stylesCount++;
+                    }
                 }
+                else if (item.startsWith("48;")) {
+                    bg = item.substring(3).replaceAll(";", "-");
+                    pos = bg.indexOf("m");
+
+                    if (pos > 0) {
+                        char = bg.substring(pos + 1);
+                        bg = bg.substring(0, pos);
+                    }
+
+                    result += '<span class="ansi-color-bg-';
+                    result += bg;
+                    result += '">';
+                    result += char;
+
+                    stylesCount++;
+                }
+                else if (item.startsWith("0m")) {
+                    char = item.substring(pos + 2);
+
+                    for(let c = 0 ; c < stylesCount ; c++)
+                        result += '</span>';
+
+                    stylesCount = 0;
+
+                    result += char;
+                }
+                else if (item.startsWith("1m")) {
+                    char = item.substring(pos + 2);
+
+                    result += '<span style="font-weight: bold;">';
+                    result += char;
+
+                    stylesCount++;
+                }
+                else if (item.startsWith("2m")) {
+                    char = item.substring(pos + 2);
+
+                    result += '<span style="opacity: 0.5;">';
+                    result += char;
+
+                    stylesCount++;
+                }
+                else if (item.startsWith("3m")) {
+                    char = item.substring(pos + 2);
+
+                    result += '<span style="font-style: italic;">';
+                    result += char;
+
+                    stylesCount++;
+                }
+                else if (item.startsWith("4")) {
+                    char = item.substring(pos + 2);
+
+                    result += '<span style="text-decoration: underline;">';
+                    result += char;
+
+                    stylesCount++;
+                }
+                else if (item.startsWith("9")) {
+                    char = item.substring(pos + 2);
+
+                    result += '<span style="text-decoration: line-through;">';
+                    result += char;
+
+                    stylesCount++;
+                }
+                else
+                    result += item;
             }
+
+            for(let c = 0 ; c < stylesCount ; c++)
+                result += '</span>';
         }
         else
             result = value;
