@@ -11,7 +11,7 @@ function ansi2Html(value) {
                 let item = values[i];
 
                 if (item === "m")
-                    result += "<br/>";
+                    result += "</span>";
                 else {
                     let fg = "";
                     let bg = "";
@@ -33,13 +33,15 @@ function ansi2Html(value) {
                                 bg = bg.substring(0, pos);
                             }
 
+                            if(result.length > 0)
+                                result += '</span>';
+
                             result += '<span class="ansi-color-fg-';
                             result += fg;
                             result += ' ansi-color-bg-';
                             result += bg;
                             result += '">';
                             result += char;
-                            result += '</span>';
                         }
                         else {
                             pos = item.indexOf("m");
@@ -49,11 +51,13 @@ function ansi2Html(value) {
                                 fg = item.substring(3, pos).replaceAll(";", "-");
                             }
 
+                            if(result.length > 0)
+                                result += '</span>';
+
                             result += '<span class="ansi-color-fg-';
                             result += fg;
                             result += '">';
                             result += char;
-                            result += '</span>';
                         }
                     }
                     else if (item.startsWith("48;")) {
@@ -65,11 +69,13 @@ function ansi2Html(value) {
                             bg = bg.substring(0, pos);
                         }
 
+                        if(result.length > 0)
+                            result += '</span>';
+
                         result += '<span class="ansi-color-bg-';
                         result += bg;
                         result += '">';
                         result += char;
-                        result += '</span>';
                     }
                     else
                         result += item;
