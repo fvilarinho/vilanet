@@ -24,7 +24,10 @@ const COMMANDS = [
             "| \e[38;97m\e[1mName\e[0m                        | \e[38;97m\e[1mURL\e[0m                                                    |",
             "+-----------------------------+--------------------------------------------------------+",
             "| My Website                  | <a href='https://github.com/fvilarinho/vilanet' target='_vilanet'>https://github.com/fvilarinho/vilanet</a>                  |",
+            "+-----------------------------+--------------------------------------------------------+",
             "| Raspberry PI camera         | <a href='https://github.com/fvilarinho/raspberrypi-camera' target='_raspberrypi-camera'>https://github.com/fvilarinho/raspberrypi-camera</a>       |",
+            "+-----------------------------+--------------------------------------------------------+",
+            "| CI/CD Zero to Hero          | <a href='https://github.com/fvilarinho/cicdzerotohero' target='_cicdzerotohero'>https://github.com/fvilarinho/cicdzerotohero</a>           |",
             "+-----------------------------+--------------------------------------------------------+\n",
         ]
     },
